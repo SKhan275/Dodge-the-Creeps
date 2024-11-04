@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://j1irrtoegyu0"]
+
+[ext_resource type="Texture2D" uid="uid://dwxqn7d7f7bt7" path="res://dodge_the_creeps_2d_assets/art/enemyFlyingAlt_1.png" id="1_s1su2"]
+[ext_resource type="Script" path="res://mob.gd" id="1_uo73e"]
+[ext_resource type="Texture2D" uid="uid://ctfvdcyda2unc" path="res://dodge_the_creeps_2d_assets/art/enemyFlyingAlt_2.png" id="2_o8nb1"]
+[ext_resource type="Texture2D" uid="uid://dlan7v8bd7idk" path="res://dodge_the_creeps_2d_assets/art/enemySwimming_1.png" id="3_yxoli"]
+[ext_resource type="Texture2D" uid="uid://dlc7ptswwwrjf" path="res://dodge_the_creeps_2d_assets/art/enemySwimming_2.png" id="4_xje88"]
+[ext_resource type="Texture2D" uid="uid://d3n8mj8oc7ave" path="res://dodge_the_creeps_2d_assets/art/enemyWalking_1.png" id="5_lance"]
+[ext_resource type="Texture2D" uid="uid://b1xv7rwfjjo2u" path="res://dodge_the_creeps_2d_assets/art/enemyWalking_2.png" id="6_2vgqo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lcjnp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_s1su2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_o8nb1")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yxoli")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xje88")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_lance")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2vgqo")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0fsv1"]
+
+[node name="Mob" type="RigidBody2D"]
+collision_mask = 0
+script = ExtResource("1_uo73e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lcjnp")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0fsv1")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
